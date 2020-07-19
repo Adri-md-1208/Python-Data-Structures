@@ -9,18 +9,18 @@ Data structure : array
 
 Description:
     An array is a dynamic data structure that contains a finite number of elements that are all of the
-    same type (numeric only). The array type is predefined by Python and we do not have to implement it.
+    same type (numeric only). The array type is predefined by Python.
 
 Operations and asymptotic complexity:
     create_void : create an empty array. O(1)
-    is_void : returns if the array have no elements. O(1)
-    insert_element : add an element at the index position. O(1)
-    delete_index : remove the element at the index position. O(1)
+    is_void : return true if the array have no elements. O(1)
+    insert_element : add an element at the index position. O(n)
+    delete_index : remove the element at the index position. O(n)
     delete_element : remove the first occurrence of the element. O(n)
     search : search an element and return his index. O(n)
     update : change the value of the element at the index position. O(1)
     show_array : show all the elements of the array. O(n)
-    
+
 Types supported (most common):
     b : signed integer of 1 byte
     B : unsigned integer of 1 byte
@@ -66,7 +66,7 @@ def insert_element(a, i, e):
 def delete_index(a, i):
     """
     :param a: array
-    :param i: integer
+    :param i: index
     :return: void
     """
     a.pop(i)
