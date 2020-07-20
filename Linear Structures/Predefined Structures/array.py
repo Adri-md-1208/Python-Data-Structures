@@ -90,7 +90,7 @@ def search(a, e):
     for i in a:
         if a[i] == e:
             return i
-        return -1
+    return -1
 
 
 def update(a, i, e):

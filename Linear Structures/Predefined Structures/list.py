@@ -12,7 +12,7 @@ Description:
     The list data structure is predefined by Python.
 
 Operations and asymptotic complexity:
-    create_void : create an empty array. O(1)
+    create_void : create an empty list. O(1)
     is_void : return true if the list have no elements. O(1)
     insert_element : add an element at the index position. O(n)
     delete_index : remove the element at the index position. O(n)
@@ -23,6 +23,7 @@ Operations and asymptotic complexity:
 
 Types supported : all python data types
  """
+
 
 # IMPLEMENTATION OF LIST
 
@@ -46,9 +47,10 @@ def insert_element(l, i, e):
     :param l: list
     :param i: index
     :param e: element
-    :return:
+    :return: void
     """
     l.insert(i, e)
+
 
 def delete_index(l, i):
     """
@@ -77,7 +79,7 @@ def search(l, e):
     for i in l:
         if l[i] == e:
             return i
-        return -1
+    return -1
 
 
 def update(l, i, e):
@@ -97,4 +99,3 @@ def show_list(l):
     """
     for i in l:
         print(i)
-
