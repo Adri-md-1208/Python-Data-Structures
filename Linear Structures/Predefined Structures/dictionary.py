@@ -29,6 +29,8 @@ Types supported :
  """
 
 
+# IMPLEMENTATION OF DICTIONARY
+
 def create_void():
     """
     :return: void dictionary
