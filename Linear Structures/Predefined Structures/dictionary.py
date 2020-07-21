@@ -111,4 +111,4 @@ def show_dict(d):
     :return: void (only prints)
     """
     for k, v in d.items():
-        print(k, ':', v)
+        print('{}: {}'.format(k, v))
