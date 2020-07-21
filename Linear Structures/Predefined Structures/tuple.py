@@ -18,7 +18,7 @@ Operations and asymptotic complexity:
     delete_index : returns a new tuple without the element at this index. O(n)
     delete_element : returns a new tuple without the first occurrence of the element. O(n)
     search : search an element and return his index. O(n)
-    update : returns a new tuple with the updated element. O(n)
+        update : returns a new tuple with the updated element. O(n)
     show_tuple: show all the elements of the tuple. O(n)
 
 Types supported : all python data types
