@@ -25,7 +25,7 @@ Types supported : all python data types
  """
 
 
-# IMPLEMENTATION OF SINGLE LINKED LIST
+# IMPLEMENTATION OF SINGLY LINKED LIST
 
 class Node:
     def __init__(self, data=None):
