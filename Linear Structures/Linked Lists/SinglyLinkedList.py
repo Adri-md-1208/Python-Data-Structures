@@ -18,6 +18,8 @@ Operations and asymptotic complexity:
     insert_tail : appends a node behind the last element. O(n)
     remove_head : removes the header node. O(1)
     remove_element : removes the node that contains that element. O(n)
+    first : returns the first element of the sll. O(1)
+    last : returns the last element of the sll. O(n)
     show_sll : show all data of the nodes. O(n)
 
 
@@ -105,6 +107,24 @@ class SinglyLinkedList:
             if i.data == data:
                 aux.next = i.next
                 i.data = None
+
+    def first(self):
+        """
+        :return: first element of the sll
+        """
+        return self.head.data
+
+    def last(self):
+        """
+        :return: last element of the sll
+        """
+        i = self.head
+        if i is None:
+            return None
+        else:
+            while i.next is not None:
+                i = i.next
+            return i.data
 
     def show_sll(self):
         """
