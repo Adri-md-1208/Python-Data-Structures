@@ -1,7 +1,7 @@
 """
 Python-Data-Structures by Adrian Morales Dato
 GitHub : Adri-md-1208
-E-mail : a.morales.2019@alumnos.u3rjc.es
+E-mail : a.morales.2019@alumnos.urjc.es
 Released under a "GPLv3" license
 
 
