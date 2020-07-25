@@ -47,7 +47,8 @@ class Stack:
         :param data: element to insert
         :return: void
         """
-        self.stack.append(data)
+        if data not in self.stack:
+            self.stack.append(data)
 
     def pop(self):
         """
