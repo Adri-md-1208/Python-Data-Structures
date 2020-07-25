@@ -1,7 +1,7 @@
 """
 Python-Data-Structures by Adrian Morales Dato
 GitHub : Adri-md-1208
-E-mail : a.morales.2019@alumnos.u3rjc.es
+E-mail : a.morales.2019@alumnos.urjc.es
 Released under a "GPLv3" license
 
 
@@ -13,10 +13,10 @@ Description:
 
 Operations and asymptotic complexity:
     create_void : create an empty stack. O(1)
-    is_void : return true if the sll have no elements. O(1)
-    push : insert a element in the tail (our peek). O(1)
+    is_void : return true if the stack have no elements. O(1)
+    push : insert a element in the tail (our peek). O(n)
     pop : removes the last element of the stack. O(n)
-    peek : returns the peek element of the stack (the last). O(1)
+    peek : returns the peek element of the stack (the last). O(n)
     show_stack : show all data of the stack. O(n)
 
 Types supported : all python data types
