@@ -21,7 +21,7 @@ python --version
 ```` 
 or opening the python shell and check the version:
 
-![Version](./version.PNG)
+![Version](./tools/images/version.PNG)
 
 ## Setup
 Nothing for now.
