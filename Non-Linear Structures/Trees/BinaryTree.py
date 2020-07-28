@@ -22,7 +22,7 @@ Operations and asymptotic complexity:
     set_right : sets the right child data. O(1)
     set_left : sets the left child data. O(1)
     insert_node : inserts a complete node with a root, left child and right child. O(1)
-    show_bt : prints all the tree values. O(n^2)
+    show_bt : prints all the tree values. O(n²)
 
 Types supported : all python data types
  """
