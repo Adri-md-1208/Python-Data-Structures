@@ -13,9 +13,16 @@ Description:
     That is a recursive definition of tree.
 
 Operations and asymptotic complexity:
-    create_void : returns an empty node
-    is_void : returns true if the node is empty
-    insert_node : inserts a complete node with a root, left child and right child
+    create_void : returns an empty node. O(1)
+    is_void : returns true if the node is empty. O(1)
+    get_root : gets the root data. O(1)
+    get_right : gets the right child data. O(1)
+    get_left : gets the left child data. O(1)
+    set_root : sets the root data. O(1)
+    set_right : sets the right child data. O(1)
+    set_left : sets the left child data. O(1)
+    insert_node : inserts a complete node with a root, left child and right child. O(1)
+    show_bt : prints all the tree values. O(n^2)
 
 Types supported : all python data types
  """
