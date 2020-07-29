@@ -22,6 +22,7 @@ Operations and asymptotic complexity:
     set_right : sets the right child data. O(1)
     set_left : sets the left child data. O(1)
     insert_node : inserts a complete node with a root, left child and right child. O(1)
+    find : searches for an element in the tree. O(n²)
     show_bt : prints all the tree values. O(n²)
 
 Types supported : all python data types
@@ -101,6 +102,19 @@ class BTree:
         self.set_root(root)
         self.left = lc
         self.right = rc
+
+    def find(self, data):
+        """
+        :param data: element to search
+        :return: 0 if the element is found or -1 in case of no occurrences
+        """
+        if self.data:
+            if self.data == data:
+                return 0
+            elif self.data > data:
+                self.left.find(data)
+            elif self.data < data:
+                self.right.find(data)
 
     def show_bt(self):
         """
