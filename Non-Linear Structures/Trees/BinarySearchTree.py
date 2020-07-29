@@ -23,7 +23,9 @@ Operations and asymptotic complexity:
     set_root : sets the root data. O(1)
     set_right : sets the right child data. O(1)
     set_left : sets the left child data. O(1)
+    insert_element : inserts an element in the tree. O(n)
     insert_node : inserts a complete node with a root, left child and right child. O(1)
+    find : searches for an element in the tree. O(log n)
     show_bt : prints all the tree values. O(n²)
 
 Types supported : all python data types
@@ -36,10 +38,10 @@ def create_void():
     """
     :return: empty root node
     """
-    return BTree
+    return BSTree
 
 
-class BTree:
+class BSTree:
     def __init__(self, data=None):
         """
         :param data: root data
@@ -93,6 +95,19 @@ class BTree:
         """
         return self.data is None
 
+    def insert_element(self, data):
+        """
+        :param data: element to insert
+        :return: void
+        """
+        if not self.data:
+            self.data = BSTree(data)
+        else:
+            if data < self.data:
+                self.left.insert_element(data)
+            else:
+                self.right.insert_element(data)
+
     def insert_node(self, root, lc, rc):
         """
         :param root: root of the node
@@ -102,15 +117,28 @@ class BTree:
         """
         self.set_root(root)
         if lc <= root:
-            self.left = lc
+            self.left = BSTree(lc)
         else:
-            self.right = lc
+            self.right = BSTree(lc)
         if rc > root and not self.right:
-            self.right = rc
+            self.right = BSTree(rc)
         elif self.right and self.right < rc:
-            self.right.right = rc
+            self.right.right = BSTree(rc)
         else:
-            self.right.left = rc
+            self.right.left = BSTree(rc)
+
+    def find(self, data):
+        """
+        :param data: element to search
+        :return: 0 if the element is found or -1 in case of no occurrences
+        """
+        if self.data:
+            if self.data == data:
+                return 0
+            elif self.data > data:
+                self.left.find(data)
+            elif self.data < data:
+                self.right.find(data)
 
     def show_bt(self):
         """
