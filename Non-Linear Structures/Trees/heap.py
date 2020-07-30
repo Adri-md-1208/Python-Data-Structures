@@ -16,9 +16,9 @@ Operations and asymptotic complexity: create_void : returns an empty node. O(1)
     create_void : returns an empty list (that represents the nodes). O(1)
     is_void : returns true if the node is empty. O(1)
     insert_element : inserts an element on the heap. O(log n)
-    remove_element : removes the less element of the heap. O(n²)
-    replace_element : removes the less element of the heap and inserts a new element. O(n²)
-    show_heap : prints all the elements of the heap. O(n²)
+    remove_element : removes the less element of the heap. O(n)
+    replace_element : removes the less element of the heap and inserts a new element. O(n)
+    show_heap : prints all the elements of the heap. O(n)
 
 Types supported : all python data types
 """
