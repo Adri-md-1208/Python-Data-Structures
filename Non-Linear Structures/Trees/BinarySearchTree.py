@@ -25,7 +25,7 @@ Operations and asymptotic complexity:
     set_left : sets the left child data. O(1)
     insert_element : inserts an element in the tree. O(n)
     insert_node : inserts a complete node with a root, left child and right child. O(1)
-    find : searches for an element in the tree. O(log n)
+    find : searches for an element in the tree. O(n²)
     show_bt : prints all the tree values. O(n²)
 
 Types supported : all python data types
