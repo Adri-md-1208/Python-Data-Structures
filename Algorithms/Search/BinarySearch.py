@@ -26,7 +26,7 @@ def binarySearch(array, value):
     index0 = 0
     indexN = len(array) - 1
 
-    while index0 <= indexN:
+    if index0 < indexN:
 
         mid = (index0 + indexN) // 2
 
@@ -38,6 +38,6 @@ def binarySearch(array, value):
 
         elif array[mid] > value:
             indexN = mid - 1
-
-    return None
+    else:
+        return None
 
