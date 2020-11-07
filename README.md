@@ -27,5 +27,5 @@ or opening the python shell and check the version:
 ## Setup
 Nothing for now.
 
-### Finished
-This repo is now closed. I may add new data structures and algorithms in a future.
+### Building
+I am refactoring the classes for better performance.
