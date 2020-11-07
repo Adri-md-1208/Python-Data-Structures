@@ -8,12 +8,13 @@ Released under a "GPLv3" license
 Data structure : array
 
 Description:
-    An array is a dynamic data structure that contains a finite number of elements that are all of the
-    same type (numeric only). The array type is predefined by Python.
+    An array is a dynamic data structure that contains a finite number of
+    elements that are all of the same type (numeric only).
+    The array type is predefined by Python.
 
 Operations and asymptotic complexity:
-    create_void : create an empty array. O(1)
-    is_void : return true if the array have no elements. O(1)
+    __init__ : create an empty array. O(1)
+    is_empty : return true if the array have no elements. O(1)
     insert_element : add an element at the index position. O(n)
     delete_index : remove the element at the index position. O(n)
     delete_element : remove the first occurrence of the element. O(n)
@@ -30,83 +31,76 @@ Types supported (most common):
     d : double of 8 bytes
 """
 
-from array import *
-
+from array import array
 
 # IMPLEMENTATION OF ARRAY
 
-def create_void(t):
-    """
-    :param t: type of the elements (string)
-    :return: void array
-    """
-    return array(t, [])
 
+class _array:
+    """
+    The _array class is based on <class array.array> predefined class
+    """
 
-def is_void(a):
-    """
-    :param a: array
-    :return: boolean
-    """
-    if a.buffer_info()[1] == 0:
-        return True
-    return False
+    def __init__(self, t):
+        """
+        :param t: type of the elements (string)
+        :return: empty array
+        """
+        self.array = array(t, [])
 
+    def is_empty(self):
+        """
+        :return: boolean
+        """
+        if self.array.buffer_info()[1] == 0:
+            return True
+        return False
 
-def insert_element(a, i, e):
-    """
-    :param a: array
-    :param i: index
-    :param e: element
-    :return: void
-    """
-    a.insert(i, e)
+    def insert_element(self, i, e):
+        """
+        :param i: index
+        :param e: element
+        :return: None
+        """
+        self.array.insert(i, e)
 
+    def delete_index(self, i):
+        """
+        :param i: index
+        :return: None
+        """
+        self.array.pop(i)
 
-def delete_index(a, i):
-    """
-    :param a: array
-    :param i: index
-    :return: void
-    """
-    a.pop(i)
+    def delete_element(self, e):
+        """
+        :param e: element
+        :return: None
+        """
+        self.array.remove(e)
 
+    def search(self, e):
+        """
+        :param e: element
+        :return: index of the element or -1 in case of no occurrences
+        """
+        for i in self.array:
+            if i == e:
+                return i
+        return -1
 
-def delete_element(a, e):
-    """
-    :param a: array
-    :param e: element
-    :return: void
-    """
-    a.remove(e)
+    def update(self, i, e):
+        """
+        :param i: index
+        :param e: element
+        :return: None
+        """
+        self.array[i] = e
 
+    def show_array(self):
+        """
+        :return: void (only prints)
+        """
+        for i in self.array:
+            print(i)
 
-def search(a, e):
-    """
-    :param a: array
-    :param e: element
-    :return: index of the element or -1 in case of no occurrences
-    """
-    for i in a:
-        if a[i] == e:
-            return i
-    return -1
-
-
-def update(a, i, e):
-    """
-    :param a: array
-    :param i: index
-    :param e: element
-    :return: void
-    """
-    a[i] = e
-
-
-def show_array(a):
-    """
-    :param a: array
-    :return: void (only prints)
-    """
-    for i in a:
-        print(i)
+# TODO : Make unit test
