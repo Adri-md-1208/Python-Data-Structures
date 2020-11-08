@@ -8,107 +8,90 @@ Released under a "GPLv3" license
 Data structure : dictionary
 
 Description:
-    A dictionary is a dynamic data structure that is formed by pairs of keys and values. The keys are
-    unique while the values may not be. The dictionary data structure is predefined by Python.
+    A dictionary is a dynamic data structure that is formed by pairs of keys
+    and values. The keys are unique while the values may not be.
+    The dictionary data structure is predefined by Python.
 
 Operations and asymptotic complexity:
-    create_void : create an empty dictionary. O(1)
-    is_void : return true if the dictionary have no elements. O(1)
-    insert_element : appends a new pair key-value. O(1)
-    delete_key : removes a key-value pair of the dictionary. O(n)
+    __init__ : create an empty dictionary. O(1)
+    is_empty : return true if the dictionary have no elements. O(1)
+    insert_pair : appends a new pair key-value. O(1)
+    delete_pair : removes a key-value pair of the dictionary. O(n)
     clear_dict : removes all the key-value pairs of the dictionary. O(n)
-    delete_dict : removes the entire dictionary. O(n)
     search : search an element and return his value. O(n)
     update : update the value of the key passed. O(n)
     show_dict: show all the key-value pairs of the dictionary. O(n)
 
 Types supported :
-    The keys must be of an immutable python type (strings, numbers or tuples) while the values can
-    be of any predefined data type.
+    The keys must be of an immutable python type (strings, numbers or tuples)
+    while the values can be of any predefined data type.
 
  """
 
 
 # IMPLEMENTATION OF DICTIONARY
 
-def create_void():
+class _dictionary:
     """
-    :return: void dictionary
+    The _dictionary class is based on <class dict> predefined class
     """
-    return {}
 
+    def __init__(self):
+        """
+        :return: empty dictionary
+        """
+        self.dictionary = {}
 
-def is_void(d):
-    """
-    :param d: dictionary
-    :return: boolean
-    """
-    return not d
+    def is_void(self):
+        """
+        :return: boolean
+        """
+        return not self.dictionary
 
+    def insert_element(self, k, v):
+        """
+        :param k: key
+        :param v: value
+        :return: None
+        """
+        if k not in self.dictionary:
+            self.dictionary[k] = v
 
-def insert_element(d, k, v):
-    """
-    :param d: dictionary
-    :param k: key
-    :param v: value
-    :return: void
-    """
-    if not k in d:
-        d[k] = v
+    def delete_key(self, k):
+        """
+        :param k: key
+        :return: None
+        """
+        del self.dictionary[k]
 
+    def clear_dict(self):
+        """
+        :return: None
+        """
+        self.dictionary.clear()
 
-def delete_key(d, k):
-    """
-    :param d: dictionary
-    :param k: key
-    :return: void
-    """
-    del d[k]
+    def search(self, k):
+        """
+        :param k: key
+        :return: index of the element or -1 in case of no occurrences
+        """
+        for i in self.dictionary:
+            if i == k:
+                return self.dictionary[i]
+        return -1
 
+    def update(self, k, v):
+        """
+        :param k: key
+        :param v: value
+        :return: None
+        """
+        if k in self.dictionary:
+            self.dictionary[k] = v
 
-def clear_dict(d):
-    """
-    :param d: dictionary
-    :return: void
-    """
-    d.clear()
-
-
-def delete_dict(d):
-    """
-    :param d: dictionary
-    :return: void
-    """
-    del d
-
-
-def search(d, k):
-    """
-    :param d: dictionary
-    :param k: key
-    :return: index of the element or -1 in case of no occurrences
-    """
-    for i in d:
-        if i == k:
-            return d[i]
-    return -1
-
-
-def update(d, k, v):
-    """
-    :param d: dictionary
-    :param k: key
-    :param v: value
-    :return: void
-    """
-    if k in d:
-        d[k] = v
-
-
-def show_dict(d):
-    """
-    :param d: dictionary
-    :return: void (only prints)
-    """
-    for k, v in d.items():
-        print('{}: {}'.format(k, v))
+    def show_dict(self):
+        """
+        :return: void (only prints)
+        """
+        for k, v in self.dictionary.items():
+            print('{}: {}'.format(k, v))
