@@ -8,7 +8,7 @@ Released under a "GPLv3" license
 Data structure : array
 
 Description:
-    An array is a dynamic data structure that contains a finite number of
+    An array is an static data structure that contains a finite number of
     elements that are all of the same type (numeric only).
     The array type is predefined by Python.
 
@@ -16,8 +16,10 @@ Operations and asymptotic complexity:
     __init__ : create an empty array. O(1)
     is_empty : return true if the array have no elements. O(1)
     insert_element : add an element at the index position. O(n)
+    append_element : append an element at the last index of the array. O(n)
     delete_index : remove the element at the index position. O(n)
     delete_element : remove the first occurrence of the element. O(n)
+    pop_element : remove the last element of the array. O(n)
     search : search an element and return his index. O(n)
     update : change the value of the element at the index position. O(1)
     show_array : show all the elements of the array. O(n)
@@ -46,13 +48,13 @@ class _array:
         :param t: type of the elements (string)
         :return: empty array
         """
-        self.array = array(t, [])
+        self.a = array(t, [])
 
     def is_empty(self):
         """
         :return: boolean
         """
-        if self.array.buffer_info()[1] == 0:
+        if self.a.buffer_info()[1] == 0:
             return True
         return False
 
@@ -62,28 +64,41 @@ class _array:
         :param e: element
         :return: None
         """
-        self.array.insert(i, e)
+        self.a.insert(i, e)
+
+    def append_element(self, e):
+        """
+        :param e: element
+        :return: None
+        """
+        self.a.append(e)
 
     def delete_index(self, i):
         """
         :param i: index
         :return: None
         """
-        self.array.pop(i)
+        del self.a[i]
+
+    def pop_element(self):
+        """
+        :return: None
+        """
+        self.a.pop()
 
     def delete_element(self, e):
         """
         :param e: element
         :return: None
         """
-        self.array.remove(e)
+        self.a.remove(e)
 
     def search(self, e):
         """
         :param e: element
         :return: index of the element or -1 in case of no occurrences
         """
-        for i in self.array:
+        for i in self.a:
             if i == e:
                 return i
         return -1
@@ -94,13 +109,13 @@ class _array:
         :param e: element
         :return: None
         """
-        self.array[i] = e
+        self.a[i] = e
 
     def show_array(self):
         """
         :return: void (only prints)
         """
-        for i in self.array:
+        for i in self.a:
             print(i)
 
 # TODO : Make unit test
