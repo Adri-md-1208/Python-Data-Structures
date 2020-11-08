@@ -8,12 +8,13 @@ Released under a "GPLv3" license
 Data structure : set
 
 Description:
-    A set is a static data structure that represents a collection of immutable items without
-    any kind of order. The set data structure is predefined by Python.
+    A set is a dynamic data structure that represents a collection of unique.
+    The elements are accessed by mapping, like dictionaries. The set data
+    structure is predefined by Python.
 
 Operations and asymptotic complexity:
-    create_void : create an empty set. O(1)
-    is_void : returns true if the set is empty. O(1)
+    __init__ : create an empty set. O(1)
+    is_empty : returns true if the set is empty. O(1)
     add_element : add an element to the set. O(1)
     remove_element : remove an element of the set. O(n)
     is_in : returns true if the element is in the set. O(n)
@@ -23,87 +24,76 @@ Operations and asymptotic complexity:
     show_set : prints all the elements of the set. O(n)
 
 Types supported :
-    The keys must be of an immutable python type (strings, numbers or tuples) while the values can
-    be of any predefined data type.
+    The keys must be of an immutable python type (strings, numbers or tuples)
+    while the values can be of any predefined data type.
 
  """
 
-
 # IMPLEMENTATION OF SET
 
-def create_void():
-    """
-    :return: void set
-    """
-    return set()
 
+class _set:
+    """
+    The _set class is based on <class set> predefined class
+    """
 
-def is_void(s):
-    """
-    :param s: set
-    :return: boolean
-    """
-    return not s
+    def __init__(self):
+        """
+        :return: empty set
+        """
+        self.set = set()
 
+    def is_empty(self):
+        """
+        :return: boolean
+        """
+        return not self.set
 
-def add_element(s, e):
-    """
-    :param s: set
-    :param e: element
-    :return: void
-    """
-    s.add(e)
+    def add_element(self, e):
+        """
+        :param e: element
+        :return: None
+        """
+        self.set.add(e)
 
+    def remove_element(self, e):
+        """
+        :param e: element
+        :return: None
+        """
+        self.s.discard(e)
 
-def remove_element(s, e):
-    """
-    :param s: set
-    :param e: element
-    :return: void
-    """
-    s.discard(e)
+    def is_in(self, e):
+        """
+        :param e: element
+        :return: boolean
+        """
+        return e in self.set
 
+    def union(self, s2):
+        """
+        :param s2: set 2
+        :return: a new set with the union of both sets
+        """
+        return self.set | s2
 
-def is_in(s, e):
-    """
-    :param s: set
-    :param e: element
-    :return: boolean
-    """
-    return e in s
+    def intersection(self, s2):
+        """
+        :param s2: set 2
+        :return: a new set with the intersection of both sets
+        """
+        return self.set & s2
 
+    def difference(self, s2):
+        """
+        :param s2: set 2
+        :return: a new set with the difference of s1 with s2
+        """
+        return self.set - s2
 
-def union(s1, s2):
-    """
-    :param s1: set 1
-    :param s2: set 2
-    :return: a new set with the union of both sets
-    """
-    return s1 | s2
-
-
-def intersection(s1, s2):
-    """
-    :param s1: set 1
-    :param s2: set 2
-    :return: a new set with the intersection of both sets
-    """
-    return s1 & s2
-
-
-def difference(s1, s2):
-    """
-    :param s1: set 1
-    :param s2: set 2
-    :return: a new set with the difference of s1 with s2
-    """
-    return s1 - s2
-
-
-def show_set(s):
-    """
-    :param s: set
-    :return: void (only prints)
-    """
-    for i in s:
-        print(i)
+    def show_set(self):
+        """
+        :return: None (only prints)
+        """
+        for i in self.set:
+            print(i)
