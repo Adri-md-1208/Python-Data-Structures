@@ -8,15 +8,13 @@ Released under a "GPLv3" license
 Data structure : tuple
 
 Description:
-    A tuple is a dynamic data structure that contains a finite number of immutable elements,
-    that can be of different types. The tuple data structure is predefined by Python.
+    A tuple is an inmutable data structure that contains a finite number of
+    immutable elements, that can be of different types.
+    The tuple data structure is predefined by Python.
 
 Operations and asymptotic complexity:
-    create_void : create an empty tuple. O(1)
-    is_void : return true if the tuple have no elements. O(1)
-    insert_element : returns a new tuple with the element added. O(n)
-    delete_index : returns a new tuple without the element at this index. O(n)
-    delete_element : returns a new tuple without the first occurrence of the element. O(n)
+    __init__ : create an empty tuple. O(1)
+    is_empty : return true if the tuple have no elements. O(1)
     search : search an element and return his index. O(n)
     update : returns a new tuple with the updated element. O(n)
     show_tuple: show all the elements of the tuple. O(n)
@@ -27,77 +25,39 @@ Types supported : all python data types
 
 # IMPLEMENTATION OF LIST
 
-def create_void():
-    """
-    :return: void tuple
-    """
-    return ()
 
-def is_void(t):
+class _tuple:
     """
-    :param t: tuple
-    :return: boolean
+    The _tuple class is based on the <class tuple> predefined class
     """
-    return not t
 
+    def __init__(self):
+        """
+        :return: empty tuple
+        """
+        self.tuple = ()
 
-def insert_element(t, i, e):
-    """
-    :param t: tuple
-    :param i: index
-    :param e: element
-    :return: new tuple with the element
-    """
-    return t[:i] + (e,) + t[i:]
+    def is_void(self):
+        """
+        :return: boolean
+        """
+        return not self.tuple
 
+    def search(self, e):
+        """
+        :param e: element
+        :return: index of the element or -1 in case of no occurrences
+        """
+        for i in self.tuple:
+            if self.tuple[i] == e:
+                return i
+        return -1
 
-def delete_index(t, i):
-    """
-    :param t: tuple
-    :param i: index
-    :return: new tuple without the element
-    """
-    return t[:i] + t[i+1:]
+    def show_tuple(self):
+        """
+        :return: void (only prints)
+        """
+        for i in self.tuple:
+            print(i)
 
-
-def delete_element(t, e):
-    """
-    :param t: tuple
-    :param e: element
-    :return: new tuple without the element
-    """
-    for i in t:
-        if t[i] == e:
-            break
-    return t[:i] + t[i+1:]
-
-
-def search(t, e):
-    """
-    :param t: tuple
-    :param e: element
-    :return: index of the element or -1 in case of no occurrences
-    """
-    for i in t:
-        if t[i] == e:
-            return i
-    return -1
-
-
-def update(t, i, e):
-    """
-    :param t: tuple
-    :param i: index
-    :param e: element
-    :return: new tuple with the updated element
-    """
-    return t[:i] + (e,) + t[i+1:]
-
-
-def show_tuple(t):
-    """
-    :param t: tuple
-    :return: void (only prints)
-    """
-    for i in t:
-        print(i)
+# TODO: make unitary test
