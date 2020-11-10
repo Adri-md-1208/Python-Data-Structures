@@ -8,18 +8,23 @@ Released under a "GPLv3" license
 Data structure : singly linked list (sll)
 
 Description:
-    The singly linked list is a linear data structure that is built by nodes. Each node have a data
-    property and a next property that aims to the next node.
+    The singly linked list is a linear, dynamic data structure that is built
+    by nodes. Each node have a data property with the value of the node and
+    a next property that aims to the next node.
 
-Operations and asymptotic complexity:
-    create_void : create an empty sll. O(1)
-    is_void : return true if the sll have no elements. O(1)
-    insert_header : insert a node trough the head. O(1)
+Operations and asymptotic complexity (class Node):
+    __init__: create an empty node. O(1)
+    __repr__: prints the Node info. O(1)
+
+Operations and asymptotic complexity (class SinglyLinkedList):
+    __init__ : create an empty sll. O(1)
+    is_empty : return true if the sll have no elements. O(1)
+    insert_head : insert a node trough the head. O(1)
     insert_tail : appends a node behind the last element. O(n)
     remove_head : removes the header node. O(1)
     remove_element : removes the node that contains that element. O(n)
-    first : returns the first element of the sll. O(1)
-    last : returns the last element of the sll. O(n)
+    head : returns the first element of the sll. O(1)
+    tail : returns the last element of the sll. O(n)
     show_sll : show all data of the nodes. O(n)
 
 
@@ -30,107 +35,112 @@ Types supported : all python data types
 # IMPLEMENTATION OF SINGLY LINKED LIST
 
 class Node:
+
     def __init__(self, data=None):
         """
-        This constructor creates a unique node with a data associated.
-        :param data: element type
+        This constructor creates an unique node with the data property.
+        :param data: element
+        :return: None
         """
         self.data = data
         self.next = None
 
-
-def create_void():
-    """
-    :return: void header
-    """
-    return SinglyLinkedList()
+    def __repr__(self):
+        """
+        Represent the Node as code
+        :return: representation of the Node
+        """
+        return "< Node (data={self.data} >"
 
 
 class SinglyLinkedList:
+
     def __init__(self):
         """
-         This constructor creates the header of the sll, which is pointing to a node.
+        This constructor creates the header of the sll,
+        which is pointing to a node.
+        :return: None
         """
-        self.head = None
+        self.head = Node()
 
-    def is_void(self):
+    def is_empty(self):
         """
         :return: boolean
         """
         return self.head is None
 
-    def insert_header(self, data):
+    def insert_head(self, data):
         """
         :param data: element of the node
-        :return: void
+        :return: None
         """
-        Aux = Node(data)
-        Aux.next = self.head
-        self.head = Aux
+        new_head = Node(data)
+        new_head.next = self.head
+        self.head = new_head
 
     def insert_tail(self, data):
         """
         :param data: element of the node
-        :return: void
+        :return: None
         """
         if self.head is not None:
-            i = Node()
-            i.next = self.head
-            while i.next is not None:
-                i = i.next
-            Aux = Node(data)
-            Aux.next = None
-            i.next = Aux
+            iterator = Node()
+            iterator.next = self.head
+            while iterator.next:
+                iterator = iterator.next
+            new_tail = Node(data)
+            new_tail.next = None
+            iterator.next = new_tail
         else:
-            self.insert_header(data)
+            self.insert_head(data)
 
     def remove_head(self):
         """
-        :return: void
+        :return: None
         """
-        headAux = self.head
-        self.head = headAux.next
-        headAux = None
+        head_aux = self.head
+        self.head = head_aux.next
+        head_aux = None
 
     def remove_element(self, data):
         """
         :param data: node that will be removed
-        :return: void
+        :return: None
         """
-        aux = self.head
-        i = aux.next
+        iterator = self.head
+        next_iter = iterator.next
 
-        if (aux is not None) & (aux.data != data):
-            while (i.data != data) & (i.next is not None):
-                i = i.next
-                aux = aux.next
-            if i.data == data:
-                aux.next = i.next
-                i.data = None
+        if (iterator is not None) & (iterator.data != data):
+            while (next_iter.data != data) & (next_iter.next):
+                next_iter = next_iter.next
+                iterator = iterator.next
+            if next_iter.data == data:
+                iterator.next = next_iter.next
+                next_iter.data = None
 
-    def first(self):
+    def head(self):
         """
         :return: first element of the sll
         """
         return self.head.data
 
-    def last(self):
+    def tail(self):
         """
         :return: last element of the sll
         """
-        i = self.head
-        if i is None:
+        if self.head is None:
             return None
         else:
-            while i.next is not None:
-                i = i.next
-            return i.data
+            iterator = self.head
+            while iterator.next:
+                iterator = iterator.next
+            return iterator.data
 
     def show_sll(self):
         """
-        :return: void
+        :return: None
         """
-        i = self.head
-        while i is not None:
-            print(i.data)
-            i = i.next
+        iterator = self.head
+        while iterator:
+            print(iterator.data)
+            iterator = iterator.next
