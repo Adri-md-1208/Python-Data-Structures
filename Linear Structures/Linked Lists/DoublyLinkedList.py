@@ -15,6 +15,7 @@ Description:
 Operations and asymptotic complexity (class Node):
     __init__: create an empty node. O(1)
     __repr__: prints the Node info. O(1)
+    __str__: prints the Node data. O(1)
 
 Operations and asymptotic complexity:
     create_void : create an empty dll. O(1)
@@ -51,7 +52,15 @@ class Node:
         Represent the Node as code
         :return: representation of the Node
         """
-        return "< Node (data={self.data} >"
+        return f"< Node (data={self.data}, prev={self.prev}, "\
+            f"next={self.next})>"
+
+    def __str__(self):
+        """
+        Represent the Node as string
+        :return: the string representing the data
+        """
+        return str(self.data)
 
 
 class DoublyLinkedList:
@@ -78,9 +87,7 @@ class DoublyLinkedList:
         new_head = Node(data)
         new_head.next = self.head
         new_head.prev = None
-        if self.is_empty():
-            self.head = new_head
-        self.head.prev = new_head
+        self.head = new_head
 
     def insert_tail(self, data):
         """
@@ -89,7 +96,7 @@ class DoublyLinkedList:
         """
         if self.head:
             iterator = Node()
-            iterator.next = self.head
+            iterator = self.head
             while iterator.next:
                 iterator = iterator.next
             new_tail = Node(data)
@@ -149,5 +156,13 @@ class DoublyLinkedList:
         """
         iterator = self.head
         while iterator:
-            print(iterator.data)
+            if iterator.data is not None:
+                print(iterator)
             iterator = iterator.next
+
+
+d = DoublyLinkedList()
+d.insert_head('a')
+d.insert_tail('b')
+d.insert_tail('c')
+d.show_dll()

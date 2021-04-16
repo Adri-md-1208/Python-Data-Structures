@@ -15,6 +15,7 @@ Description:
 Operations and asymptotic complexity (class Node):
     __init__: create an empty node. O(1)
     __repr__: prints the Node info. O(1)
+    __str__: prints the Node data. O(1)
 
 Operations and asymptotic complexity (class SinglyLinkedList):
     __init__ : create an empty sll. O(1)
@@ -47,10 +48,17 @@ class Node:
 
     def __repr__(self):
         """
-        Represent the Node as code
+        Represent the Node class in text format
         :return: representation of the Node
         """
-        return "< Node (data={self.data} >"
+        return f"< Node (data={self.data}) >"
+
+    def __str__(self):
+        """
+        Represent the Node as string
+        :return: the string representing the data
+        """
+        return str(self.data)
 
 
 class SinglyLinkedList:
@@ -142,5 +150,6 @@ class SinglyLinkedList:
         """
         iterator = self.head
         while iterator:
-            print(iterator.data)
+            if iterator.data is not None:
+                print(iterator.data)
             iterator = iterator.next
