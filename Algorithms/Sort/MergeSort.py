@@ -8,7 +8,9 @@ Released under a "GPLv3" license
 Algorithm : merge sort
 
 Description:
-    The merge sort algorithms is based on the divide-and-conquer principle. Consists of spliting the array into halfs and then merge into a sorted array.
+    The merge sort algorithms is based on the divide-and-conquer principle.
+    Consists of spliting the array into halfs and then merge into
+    a sorted array.
 
 Algorithmic efficiency : O(n log n)
 """
@@ -48,11 +50,3 @@ def mergeSort(array):
 lista = [2,45,34,21,5,323,543,66,-12,-34,-3]
 lista = mergeSort(lista)
 print(lista)
-
-
-
-
-
-
-
-

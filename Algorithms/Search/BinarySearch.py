@@ -40,4 +40,3 @@ def binarySearch(array, value):
             indexN = mid - 1
     else:
         return None
-
